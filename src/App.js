@@ -1,6 +1,7 @@
 import React from 'react';
 import GlobalStyle, { Container } from './style/GlobalStyles';
 import Comment from './components/Comment/Comment';
+import Loading from './components/Loading/Loading';
 import { api } from './services';
 
 function App() {
@@ -15,14 +16,12 @@ function App() {
       });
     };
 
-    getComments();
+    setTimeout(getComments, 2000);
   }, []);
 
   return (
     <>
-      <Container>
-        <Comment />
-      </Container>
+      <Container>{loading ? <Loading /> : <Comment />}</Container>
       <GlobalStyle />
     </>
   );
