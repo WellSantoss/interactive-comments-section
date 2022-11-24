@@ -21,7 +21,15 @@ function App() {
 
   return (
     <>
-      <Container>{loading ? <Loading /> : <Comment />}</Container>
+      <Container>
+        {loading || !comments ? (
+          <Loading />
+        ) : (
+          comments.map((comment) => (
+            <Comment key={comment.id} comment={comment} />
+          ))
+        )}
+      </Container>
       <GlobalStyle />
     </>
   );
